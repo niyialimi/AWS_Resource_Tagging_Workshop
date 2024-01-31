@@ -1,6 +1,6 @@
 # Hands-On Workshop: Enforcing Tagging in AWS Using Tagging Policies and Service Control Policies
 
-[AWS Resource Tagging](images/aws_resource_tagging.png)
+![AWS Resource Tagging](images/aws_resource_tagging.png)
 
 ## Introduction
 
@@ -32,19 +32,19 @@ Follow these steps to create and associate a tag policy for EC2 instances, ensur
 - Open the “AWS Organizations” service.
 - Enable Tag policies.
 
-[Enable Tag policies](images/Enable_Tag_policies.png)
+![Enable Tag policies](images/Enable_Tag_policies.png)
 
 #### Step 2: Create Tag Policy
 
 - In the left navigation pane, select “Tag policies.”
 - Click on “Create tag policy.”
 
-[Create tag policy1](images/Create_tag_policy1.png)
-[Create tag policy2](images/Create_tag_policy2.png)
+![Create tag policy1](images/Create_tag_policy1.png)
+![Create tag policy2](images/Create_tag_policy2.png)
 
 - Define the tag policy by specifying tag keys and values. Let’s set tag policies for “Environment” and “Project” tags for EC2 Instance. Edit values and set your tag value(s).
 
-[Define tag policy](images/Define_tag_policy.png)
+![Define tag policy](images/Define_tag_policy.png)
 
 - Save the policy.
 
@@ -52,23 +52,23 @@ Follow these steps to create and associate a tag policy for EC2 instances, ensur
 
 - Associate the created tag policy with the root or specific organizational unit (OU) or Account.
 
-[Associate tag policy1](images/Associate_tag_policy1.png)
-[Associate tag policy2](images/Associate_tag_policy2.png)
-[Associate tag policy3](images/Associate_tag_policy3.png)
+![Associate tag policy1](images/Associate_tag_policy1.png)
+![Associate tag policy2](images/Associate_tag_policy2.png)
+![Associate tag policy3](images/Associate_tag_policy3.png)
 
 #### Step 4: Test the Tag Policy
 
 - Create a new EC2 instance and verify that the tags specified in the tag policy are enforced during creation.
 
-   Using the Wrong Tag values
+  #### **Using the Wrong Tag values**
    ![Wrong Tag Values1](images/wrong_tag_values1.png)
    ![Wrong Tag Values2](images/wrong_tag_values2.png)
 
-   Using the right Tag values
+   #### **Using the right Tag values**
    ![Right Tag Values1](images/right_tag_values1.png)
    ![Right Tag Values2](images/right_tag_values2.png)
 
-   Note that the Tag Policy solely validates the accepted value of a tag and not its existence. Users with the necessary IAM permissions will still be able to create resources without tags. To restrict the creation of AWS resources lacking the required tags, we will employ Service Control Policies (SCPs) to establish protective boundaries for resource creation requests.
+   **Note** that the Tag Policy solely validates the accepted value of a tag and not its existence. Users with the necessary IAM permissions will still be able to create resources without tags. To restrict the creation of AWS resources lacking the required tags, we will employ Service Control Policies (SCPs) to establish protective boundaries for resource creation requests.
 
 ## Section 2: Enhancing Governance with Service Control Policies (SCPs)
 
@@ -90,18 +90,18 @@ Continue with the previous example and create an SCP that denies the creation of
 - Open the “AWS Organizations” service.
 - Enable Service Control policies.
 
-[Enable Service Control policies](images/Enable_Service_control_policies.png)
+![Enable Service Control policies](images/Enable_Service_control_policies.png)
 
 #### Step 2: Create SCP
 
 - In the left navigation pane, select “Policies” -> “Service control policies.”
 - Click on “Create policy.”
 
-[Create Service Control policy](images/Create_Service_control_policy.png)
+![Create Service Control policy](images/Create_Service_control_policy.png)
 
 - Define the SCP to deny actions based on conditions, like creating EC2 instances without specific tags. You can use the tabs on the right side to define the Action, Resources, and Conditions or Choose the “JSON” tab and define the SCP to deny actions based on conditions, like creating EC2 instances without specific tags.
 
-[SCP Actions](images/SCP_actions.png)
+![SCP Actions](images/SCP_actions.png)
 
 ```json
 {
@@ -144,17 +144,17 @@ Continue with the previous example and create an SCP that denies the creation of
 
 - Associate the created SCP with the root or specific organizational unit (OU) or Account.
 
-[Attach SCP](images/Attach_SCP.png)
+![Attach SCP](images/Attach_SCP.png)
 
 #### Step 4: Test the SCP
 
 - Attempt to create an EC2 instance without the required tags, ensuring that the SCP prevents the action.
 
-   EC2 Creation without the Required Tags
+   #### **EC2 Creation without the Required Tags**
    ![EC2 Creation without Required Tags1](images/ec2-creation-no-tags1.png)
    ![EC2 Creation without Required Tags2](images/ec2-creation-no-tags2.png)
 
-   EC2 Creation with the Required Tags
+   #### **EC2 Creation with the Required Tags**
    ![EC2 Creation with Required Tags1](images/ec2-creation-with-tags1.png)
    ![EC2 Creation with Required Tags2](images/ec2-creation-with-tags2.png)
 
