@@ -1,4 +1,7 @@
-# Hands-On Workshop: Enforcing Tagging in AWS Using Tagging Policies and Service Control Policies
+# Hands-On Workshop: AWS Resources Tagging Enforcement Using Tagging Policies and SCPs
+
+## Date: WED, FEB 14 2024· 
+## Time: 17:30 AEDT
 
 ![AWS Resource Tagging](images/aws_resource_tagging.png)
 
